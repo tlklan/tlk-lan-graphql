@@ -7,12 +7,18 @@ const schema = `
     id: Int
     name: String
     tlk_season: Season
+    tlk_competitions: [Competition]
   }
   type Season {
     id: Int
     name: String
     start_year: Int
     end_year: Int
+  }
+  type Competition {
+    id: Int
+    short_name: String
+    full_name: String
   }
   type Query {
     getLans: [Lan]
