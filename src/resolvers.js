@@ -2,7 +2,7 @@
 import Lan from './model/lans'
 import Season from './model/seasons'
 import User from './model/users'
-import Image from './model/users'
+import Image from './model/image'
 import Competition from './model/competitions'
 import {sequelize, Sequelize} from './db'
 const Op = Sequelize.Op
