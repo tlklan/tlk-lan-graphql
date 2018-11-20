@@ -1,0 +1,31 @@
+{
+  "name": "tlk-lan-graphql",
+  "version": "0.0.1",
+  "description": "GraphQL API for TLK LAN",
+  "main": "src/index.js",
+  "author": "Krister Bäckman <ixevix@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node src/index.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "flow-bin": "^0.86.0",
+    "flow-typed": "^2.5.1"
+  },
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.3",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.41.2"
+  }
+}
