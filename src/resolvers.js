@@ -4,8 +4,8 @@ import Season from './model/seasons'
 import {sequelize, Sequelize} from './db'
 const Op = Sequelize.Op
 
-Season.hasMany(Lan, {foreignKey: 'season_id', constraints: false})
-Lan.belongsTo(Season, {foreignKey: 'season_id', constraints: false})
+Season.hasMany(Lan, {foreignKey: 'season_id'})
+Lan.belongsTo(Season, {foreignKey: 'season_id'})
 
 sequelize.sync()
 
