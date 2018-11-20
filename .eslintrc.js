@@ -29,5 +29,6 @@ module.exports = {
         "no-console": 0,
         "eol-last": 2,
         "no-unused-vars": 1,
+        "no-undef": 0,
     }
 };
