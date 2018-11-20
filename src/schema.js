@@ -6,6 +6,13 @@ const schema = `
   type Lan {
     id: Int
     name: String
+    tlk_season: Season
+  }
+  type Season {
+    id: Int
+    name: String
+    start_year: Int
+    end_year: Int
   }
   type Query {
     getLans: [Lan]
