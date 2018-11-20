@@ -11,7 +11,7 @@ sequelize.sync()
 
 const Resolvers = {
   Query: {
-    async getLans(obj, params) {
+    async getLans(obj: Object, params: Object) {
       const lans = await Lan.findAll({
         include: [{model: Season}]
       }).then(lans => {
