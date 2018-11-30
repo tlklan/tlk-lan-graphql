@@ -1,9 +1,9 @@
 // @flow
-import Lan from './model/lans'
-import Season from './model/seasons'
-import User from './model/users'
+import Lan from './model/tlk_lans'
+import Season from './model/tlk_seasons'
+import User from './model/tlk_users'
 import Image from './model/image'
-import Competition from './model/competitions'
+import Competition from './model/tlk_competitions'
 import {sequelize, Sequelize} from './db'
 const Op = Sequelize.Op
 
