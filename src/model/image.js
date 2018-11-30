@@ -38,7 +38,6 @@ const Image = sequelize.define('image', {
   }
 }, {
   tableName: 'image',
-  underscored: true,
   timestamps: false,
 })
 
