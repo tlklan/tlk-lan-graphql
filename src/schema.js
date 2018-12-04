@@ -19,11 +19,15 @@ const schema = `
   type Competitor {
     tlk_registration: Registration
   }
+  type ActualCompetitor {
+    tlk_registration: Registration
+  }
   type Competition {
     id: Int
     short_name: String
     full_name: String
     tlk_competitors: [Competitor]
+    tlk_actual_competitors: [ActualCompetitor]
   }
   type Query {
     getLans: [Lan]
