@@ -8,6 +8,7 @@ const schema = `
     name: String
     tlk_season: Season
     tlk_competitions: [Competition]
+    tlk_registrations: [Registration]
   }
   type Season {
     id: Int
@@ -22,6 +23,13 @@ const schema = `
   }
   type Query {
     getLans: [Lan]
+  }
+  type User {
+    nick: String
+  }
+  type Registration {
+    id: Int
+    tlk_user: User
   }
 `
 
