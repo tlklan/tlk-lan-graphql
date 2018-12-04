@@ -36,19 +36,6 @@ const Resolvers = {
           model: Season
         }, {
           model: Competition,
-          include: [{
-            model: ActualCompetitor,
-            include: [{
-              model: Registration,
-              include: [User]
-            }]
-          },{
-            model: Competitor,
-            include: [{
-              model: Registration,
-              include: [User]
-            }]
-          }]
         }, {
           model: Registration,
           include: [User]
