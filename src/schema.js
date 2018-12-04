@@ -16,10 +16,14 @@ const schema = `
     start_year: Int
     end_year: Int
   }
+  type Competitor {
+    tlk_registration: Registration
+  }
   type Competition {
     id: Int
     short_name: String
     full_name: String
+    tlk_competitors: [Competitor]
   }
   type Query {
     getLans: [Lan]

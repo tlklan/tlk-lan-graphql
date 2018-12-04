@@ -5,6 +5,7 @@ import User from './model/tlk_users'
 import Image from './model/image'
 import Competition from './model/tlk_competitions'
 import Registration from './model/tlk_registrations'
+import Competitor from './model/tlk_competitors'
 import {sequelize, Sequelize} from './db'
 const Op = Sequelize.Op
 
@@ -16,6 +17,9 @@ Lan.hasMany(Registration, {foreignKey: 'lan_id'})
 User.hasMany(Registration, {foreignKey: 'user_id'})
 Registration.belongsTo(Lan, {foreignKey: 'lan_id'})
 Registration.belongsTo(User, {foreignKey: 'user_id'})
+Competition.hasMany(Competitor, {foreignKey: 'competition_id'})
+Competitor.belongsTo(Competition, {foreignKey: 'competition_id'})
+Competitor.belongsTo(Registration, {foreignKey: 'registration_id'})
 
 sequelize.sync()
 
@@ -26,7 +30,14 @@ const Resolvers = {
         include: [{
           model: Season
         }, {
-          model: Competition
+          model: Competition,
+          include: [{
+            model: Competitor,
+            include: [{
+              model: Registration,
+              include: [User]
+            }],
+          }]
         }, {
           model: Registration,
           include: [User]
