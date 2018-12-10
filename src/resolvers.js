@@ -23,6 +23,7 @@ Competition.hasMany(Competitor, {foreignKey: 'competition_id'})
 Competitor.belongsTo(Competition, {foreignKey: 'competition_id'})
 Competitor.belongsTo(Registration, {foreignKey: 'registration_id'})
 Competition.hasMany(ActualCompetitor, {foreignKey: 'competition_id'})
+Registration.hasOne(ActualCompetitor, {foreignKey: 'registration_id'})
 ActualCompetitor.belongsTo(Competition, {foreignKey: 'competition_id'})
 ActualCompetitor.belongsTo(Registration, {foreignKey: 'registration_id'})
 
@@ -44,6 +45,34 @@ const Resolvers = {
         return lans
       })
       return lans
+    },
+    async getWinners() {
+      const winners = await ActualCompetitor.findAll({
+        include: [{
+          model: Registration,
+          include: [{model: User},{model: Lan}]
+        }, {
+          model: Competition,
+        }],
+        where: {position: {[Op.eq]: 1}}
+      }).then(winners => {
+        return winners
+      })
+      return winners
+    },
+    async getWinCount() {
+      const winners = await sequelize.query(`
+        SELECT u.nick, count(*) as wins
+        FROM tlk_actual_competitors ac, tlk_users u, tlk_registrations r
+        WHERE ac.position = 1
+        and ac.registration_id = r.id
+        and r.user_id = u.id
+        GROUP BY u.nick
+        ORDER BY wins DESC
+      `).then(winners => {  
+        return winners[0]
+      })
+      return winners
     }
   }
 }

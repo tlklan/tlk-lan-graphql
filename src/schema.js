@@ -21,21 +21,27 @@ const schema = `
   }
   type ActualCompetitor {
     tlk_registration: Registration
+    tlk_competition: Competition
+    position: Int
   }
   type Competition {
     id: Int
     short_name: String
     full_name: String
   }
-  type Query {
-    getLans: [Lan]
-  }
   type User {
     nick: String
+    wins: Int
   }
   type Registration {
     id: Int
     tlk_user: User
+    tlk_lan: Lan
+  }
+  type Query {
+    getLans: [Lan]
+    getWinners: [ActualCompetitor]
+    getWinCount: [User]
   }
 `
 
