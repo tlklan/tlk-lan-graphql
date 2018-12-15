@@ -69,10 +69,20 @@ const Resolvers = {
         and r.user_id = u.id
         GROUP BY u.nick
         ORDER BY wins DESC
-      `).then(winners => {  
+      `).then(winners => {
         return winners[0]
       })
       return winners
+    },
+    async getActiveLan(obj: Object, params: Object) {
+      const active = await sequelize.query(`
+        SELECT l.id, l.name
+        FROM tlk_lans l
+        WHERE l.enabled = 1
+        `).then(active => {
+          return active[0]
+          })
+        return active
     }
   }
 }
