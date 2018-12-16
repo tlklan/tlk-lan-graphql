@@ -70,19 +70,23 @@ const Resolvers = {
         GROUP BY u.nick
         ORDER BY wins DESC
       `).then(winners => {
-        return winners[0]
+        return winners
       })
       return winners
     },
-    async getActiveLan(obj: Object, params: Object) {
-      const active = await sequelize.query(`
-        SELECT l.id, l.name
-        FROM tlk_lans l
-        WHERE l.enabled = 1
-        `).then(active => {
-          return active[0]
-          })
+    async getActiveLanInfo() {
+      const active = await Lan.findOne({
+        include: [{
+          model:Registration,
+          include: [{model: User}]
+        }, {
+          model: Competition,
+        }],
+        where: {enabled: {[Op.eq]: true}}
+      }).then(active => {
         return active
+      })
+      return active
     }
   }
 }
