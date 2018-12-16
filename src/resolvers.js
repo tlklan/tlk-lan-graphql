@@ -69,10 +69,30 @@ const Resolvers = {
         and r.user_id = u.id
         GROUP BY u.nick
         ORDER BY wins DESC
-      `).then(winners => {  
+      `).then(winners => {
         return winners[0]
       })
       return winners
+    },
+    async getActiveLanInfo() {
+      const active = await Lan.findOne({
+        include: [{
+          model: Registration,
+          include: [{
+            model: User
+          }]
+        }, {
+          model: Competition,
+        }],
+        where: {
+          enabled: {
+            [Op.eq]: true
+          }
+        }
+      }).then(active => {
+        return active
+      })
+      return active
     }
   }
 }
