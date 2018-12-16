@@ -42,6 +42,7 @@ const schema = `
     getLans: [Lan]
     getWinners: [ActualCompetitor]
     getWinCount: [User]
+    getActiveLanInfo: Lan
   }
 `
 
