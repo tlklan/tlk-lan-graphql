@@ -6,6 +6,7 @@ const schema = `
   type Lan {
     id: Int
     name: String
+    enabled: Boolean
     tlk_season: Season
     tlk_competitions: [Competition]
     tlk_registrations: [Registration]
@@ -30,6 +31,7 @@ const schema = `
     full_name: String
   }
   type User {
+    name: String
     nick: String
     wins: Int
   }
