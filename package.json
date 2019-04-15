@@ -26,6 +26,6 @@
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.3",
     "mysql2": "^1.6.4",
-    "sequelize": "^4.41.2"
+    "sequelize": "^5.3.5"
   }
 }
